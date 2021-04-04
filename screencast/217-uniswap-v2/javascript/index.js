@@ -33,12 +33,12 @@ const init = async () => {
     ['function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts)'],
     account
   );
-  const tx = await uniswap.sendExactETHForTokens(
+  const tx = await uniswap.sendExactETHForTokens( // error, use swapExactETHForTokens instead of sendExactETHForTokens
     amountOutMin,
     path,
     to,
     deadline,
-    { value, gasPrice: 20e9 }
+    { value, gasPrice: 20e9 } // UnhandledPromiseRejectionWarning: Error: invalid BigNumber value (argument="value", value=[-120444719,462925206], code=INVALID_ARGUMENT, version=bignumber/5.1.0)
   );
   console.log(`Transaction hash: ${tx.hash}`);
 
